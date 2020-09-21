@@ -1,5 +1,5 @@
 <template>
-  <div class="page">
+  <div>
     <van-row>
       <van-form>
           <h2 class="title">贷款试算工具</h2>
@@ -11,7 +11,9 @@
       </van-form>
     </van-row>
   <van-row>
-    <van-button type="primary" block>贷款试算</van-button>
+    <van-cell-group>
+    <van-button type="primary" class="submit" block>贷款试算</van-button>
+    </van-cell-group>
   </van-row>
   </div>
 </template>
@@ -25,5 +27,8 @@ export default {
 }
 </script>
 <style scoped>
-
+.submit{
+  padding:0 32px;
+  margin:16px;
+}
 </style>
