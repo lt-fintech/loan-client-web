@@ -1,15 +1,17 @@
 <template>
-  <div class="trail">
+  <div class="page">
+    <van-row>
+      <van-form>
+          <h2 class="title">贷款试算工具</h2>
+        <van-cell-group>
+      <van-field v-model="amount" type="digit" label="借款金额"></van-field>
+      <van-field v-model="repayDay" type="digit" label="还款日"></van-field>
+      <van-field v-model="paymentDate" type="digit" label="借款日"></van-field>
+        </van-cell-group>
+      </van-form>
+    </van-row>
   <van-row>
-    <van-col span="8">
-    <van-button type="primary">主要按钮</van-button>
-    </van-col>
-    <van-col span="8">
-    <van-button type="primary">按钮</van-button>
-    </van-col>
-    <van-col span="8">
-    <van-button type="primary">按钮</van-button>
-    </van-col>
+    <van-button type="primary" block>贷款试算</van-button>
   </van-row>
   </div>
 </template>
@@ -22,3 +24,6 @@ export default {
   }
 }
 </script>
+<style scoped>
+
+</style>
