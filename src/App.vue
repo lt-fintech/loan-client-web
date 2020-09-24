@@ -57,6 +57,9 @@ body {
 padding: 0 16px;
 
 }
+.padding{
+  padding:0 16px;
+}
 .title{
     margin: 0;
     padding: 32px 16px 16px;

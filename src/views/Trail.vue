@@ -10,25 +10,60 @@
         </van-cell-group>
       </van-form>
     </van-row>
-  <van-row>
+  <van-row class="padding">
     <van-cell-group>
-    <van-button type="primary" class="submit" block>贷款试算</van-button>
+    <van-button type="primary" class="submit" block @click="trail">贷款试算</van-button>
     </van-cell-group>
+  </van-row>
+  <van-row>
+    {{repayplan}}
   </van-row>
   </div>
 </template>
 
 <script>
-
+import axios from 'axios'
+import {Notify} from 'vant'
 export default {
   name: 'Trail',
+  props:[],
+  data(){
+    return {
+      repayplan:{},
+      amount:null,
+      repayDay:null,
+      paymentDate:null,
+    }
+  },
+  created(){
+    
+  },
+  methods:{
+    trail(){
+      console.log(this.amount);
+      var data = {
+        "amount": 500,
+        "rate": 500,
+        "requestTime": 1597640186380,
+        "repayDay": 17,
+        "termNum": 6,
+        "interestType": "EQUAL_LOAN"
+      };
+      axios.post("http://loanapi.zhonghcc.com/loan/trail",JSON.stringify(data)).then(resp=>{
+        this.repayplan = resp.data;
+      }).catch(err=>{
+        console.log(err);
+        Notify({ type: 'warning', message: '运行失败，请联系客服处理' });
+      });
+    }
+  },
   components: {
   }
 }
 </script>
 <style scoped>
 .submit{
-  padding:0 32px;
-  margin:16px;
+  margin-top:16px;
+  margin-bottom:16px;
 }
 </style>
