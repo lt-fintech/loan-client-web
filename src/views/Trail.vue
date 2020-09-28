@@ -33,7 +33,19 @@
   </van-step>
 </van-steps>
   </van-row>
-  <van-calendar v-model="calendarShow" @confirm="calendarConfirm" />
+  <van-popup v-model="calendarShow" position="bottom" >
+  <van-datetime-picker
+  v-model="requestDate"
+  @confirm="calendarShow=false"
+  @change="calendarConfirm"
+  type="date"
+  title="选择年月日"
+  :min-date="minDate"
+  :max-date="maxDate"
+/>
+
+  </van-popup>
+  <!-- <van-calendar v-model="calendarShow" @confirm="calendarConfirm" /> -->
   </div>
 </template>
 
@@ -52,7 +64,9 @@ export default {
       requestFormatDate: null,
       requestDate:null,
       loading:true,
-      calendarShow:false
+      calendarShow:false,
+      minDate: new Date(2020, 0, 1),
+      maxDate:new Date(2025, 10, 1)
     }
   },
   created(){
@@ -84,10 +98,11 @@ export default {
       const strDate = date.getDate().toString().padStart(2, '0');
       return `${date.getFullYear()}-${month}-${strDate}`;
     },
-    calendarConfirm(date){
-      this.calendarConfirm=false;
-      this.requestDate = date;
-      this.requestFormatDate = this.dateFormatter(date);
+    calendarConfirm(){
+      console.log(this.requestDate);
+      // this.calendarConfirm=false;
+      // this.requestDate = date;
+      this.requestFormatDate = this.dateFormatter(this.requestDate);
     }
   },
   components: {
