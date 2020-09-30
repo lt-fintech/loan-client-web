@@ -9,12 +9,19 @@ Vue.use(VueRouter)
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
+    meta:{
+    title: '主页',
+    root:true,
+    }
   },
   {
     path: '/trail',
     name: 'Trail',
-    component: Trail
+    component: Trail,
+    meta:{
+    title: '还款计划试算',
+    }
   },
   {
     path: '/about',

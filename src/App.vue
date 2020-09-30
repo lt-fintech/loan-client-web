@@ -4,9 +4,32 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
     </div> -->
+    <van-nav-bar
+  :title="$route.meta.title"
+  :left-text="$route.meta.root?'':'返回'"
+  :left-arrow="$route.meta.root!=true"
+  @click-left="onClickLeft"
+/>
     <router-view/>
   </div>
 </template>
+<script>
+
+export default {
+  name: 'App',
+  components: {
+  },
+  methods:{
+    onClickLeft(){
+      if(window.history.length<=1){
+        return false;
+      }else{
+        this.$router.back(-1);
+      }
+    }
+  }
+}
+</script>
 
 <style>
 *{margin:0;padding:0}

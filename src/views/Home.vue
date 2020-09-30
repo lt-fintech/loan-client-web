@@ -1,19 +1,22 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-    <van-button type="primary">主要按钮</van-button>
+    <van-row class="padding" style="margin-top:16px;">
+    <van-button type="primary" icon="add-o" @click="goTrail" style="height:100px;font-size:26px;" block>还款计划试算</van-button>
+    </van-row>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
 
 export default {
   name: 'Home',
+  methods:{
+    goTrail(){
+      this.$router.push({name:'Trail'});
+    }
+  },
   components: {
-    HelloWorld,
   }
 }
 </script>
