@@ -14,7 +14,7 @@
   </div>
 </template>
 <script>
-
+import '@vant/touch-emulator';
 export default {
   name: 'App',
   components: {
